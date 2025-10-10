@@ -54,9 +54,11 @@ export function CountryComparison({
 
         <div className="space-y-3">
           <div>
-            <div className="flex justify-between items-baseline mb-1">
+            <div className="mb-2">
               <span className="text-sm text-muted-foreground">Total Debt</span>
-              <span className="text-xl font-mono font-semibold text-foreground">
+            </div>
+            <div className="mb-2">
+              <span className="text-xl font-mono font-semibold text-foreground break-words">
                 {formatCurrency(country.debt)}
               </span>
             </div>
@@ -66,7 +68,7 @@ export function CountryComparison({
           <div className="grid grid-cols-2 gap-3 pt-2 border-t border-border/50">
             <div>
               <p className="text-xs text-muted-foreground mb-1">Per Capita</p>
-              <p className="text-sm font-semibold font-mono text-foreground">
+              <p className="text-sm font-semibold font-mono text-foreground break-words">
                 {formatCurrency(perCapita)}
               </p>
             </div>

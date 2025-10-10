@@ -16,10 +16,10 @@ export function MetricCard({ label, value, icon, badge }: MetricCardProps) {
         <h3 className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
           {label}
         </h3>
-        {icon && <div className="text-accent/70">{icon}</div>}
+        {icon && <div className="text-accent/70 shrink-0">{icon}</div>}
       </div>
-      <div className="flex items-end justify-between gap-4">
-        <p className="text-2xl font-semibold text-foreground font-mono tabular-nums">
+      <div className="space-y-2">
+        <p className="text-2xl font-semibold text-foreground font-mono tabular-nums break-words">
           {value}
         </p>
         {badge && (
