@@ -33,6 +33,13 @@ A real-time visualization of the United States national debt that displays the c
 - **Progression**: Show supporting statistics → Update in real-time
 - **Success criteria**: All metrics visible, properly formatted, update smoothly
 
+### International Debt Comparison
+- **Functionality**: Compare U.S. debt with other major economies, sortable by total debt, debt-to-GDP ratio, and per capita
+- **Purpose**: Provides global context and helps users understand how U.S. debt compares internationally
+- **Trigger**: Displayed below main statistics in tabbed interface
+- **Progression**: View default total debt ranking → Switch tabs to see different comparisons → Read country-specific metrics
+- **Success criteria**: All countries displayed with accurate data, smooth tab switching, clear visual hierarchy
+
 ## Edge Case Handling
 
 - **API Failure**: Display cached data with timestamp warning if API is unavailable
@@ -81,9 +88,11 @@ Animations should emphasize the relentless, continuous nature of debt growth - t
 
 - **Components**: 
   - Card for containing each metric section with subtle borders
-  - Badge for displaying contextual labels like "Per Second" or "Per Citizen"
+  - Badge for displaying contextual labels like "Per Second" or "Per Citizen" and country rankings
   - Separator for dividing metric sections
   - Skeleton for loading states during initial data fetch
+  - Tabs for switching between different country comparison views (Total Debt, Debt-to-GDP, Per Capita)
+  - Progress bars for visual comparison of debt amounts
   - Tailwind modifications: Custom gradient backgrounds, increased font sizes for counter, custom animations for number pulsing
   
 - **Customizations**: 
@@ -102,6 +111,9 @@ Animations should emphasize the relentless, continuous nature of debt growth - t
   - Warning (Phosphor) for error/stale states  
   - Calendar (Phosphor) for timestamp display
   - Users (Phosphor) for per-citizen metrics
+  - Globe (Phosphor) for international comparison section
+  - ChartBar (Phosphor) for total debt tab
+  - Coins (Phosphor) for per capita tab
   
 - **Spacing**: 
   - Generous padding (p-8, p-12) on main container

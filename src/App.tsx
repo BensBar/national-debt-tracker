@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react';
 import { DebtCounter } from '@/components/DebtCounter';
 import { MetricCard } from '@/components/MetricCard';
+import { CountryComparison } from '@/components/CountryComparison';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Toaster } from '@/components/ui/sonner';
 import { 
   TrendUp, 
   Users, 
   Calendar, 
   Warning,
-  ClockCounterClockwise 
+  ClockCounterClockwise,
+  Globe,
+  ChartBar,
+  Coins
 } from '@phosphor-icons/react';
 import {
   fetchNationalDebt,
@@ -21,6 +26,11 @@ import {
   formatNumber,
   US_POPULATION,
 } from '@/lib/debt-utils';
+import {
+  getSortedCountriesByDebt,
+  getSortedCountriesByDebtToGDP,
+  getSortedCountriesByPerCapita,
+} from '@/lib/country-debt-data';
 import { toast } from 'sonner';
 
 function App() {
@@ -106,6 +116,11 @@ function App() {
     (new Date().getTime() - new Date(debtData.date).getTime()) / (1000 * 60 * 60 * 24)
   );
 
+  const countriesByDebt = getSortedCountriesByDebt();
+  const countriesByDebtToGDP = getSortedCountriesByDebtToGDP();
+  const countriesByPerCapita = getSortedCountriesByPerCapita();
+  const maxDebt = countriesByDebt[0].debt;
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Toaster />
@@ -186,6 +201,91 @@ function App() {
             <p>
               The per-second increase is calculated based on an estimated annual deficit. 
               This rate can vary significantly based on government spending and revenue.
+            </p>
+          </div>
+        </section>
+
+        <Separator className="bg-border/50" />
+
+        <section className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Globe size={32} className="text-accent" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
+              Global Debt Comparison
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Compare national debts across the world's largest economies
+            </p>
+          </div>
+
+          <Tabs defaultValue="total" className="w-full">
+            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3">
+              <TabsTrigger value="total" className="flex items-center gap-2">
+                <ChartBar size={18} />
+                <span className="hidden sm:inline">Total Debt</span>
+                <span className="sm:hidden">Total</span>
+              </TabsTrigger>
+              <TabsTrigger value="gdp" className="flex items-center gap-2">
+                <TrendUp size={18} />
+                <span className="hidden sm:inline">Debt-to-GDP</span>
+                <span className="sm:hidden">GDP %</span>
+              </TabsTrigger>
+              <TabsTrigger value="capita" className="flex items-center gap-2">
+                <Coins size={18} />
+                <span className="hidden sm:inline">Per Capita</span>
+                <span className="sm:hidden">Per Person</span>
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="total" className="mt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {countriesByDebt.map((country, index) => (
+                  <CountryComparison
+                    key={country.code}
+                    country={country}
+                    maxDebt={maxDebt}
+                    usDebt={currentDebt}
+                    rank={index + 1}
+                  />
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="gdp" className="mt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {countriesByDebtToGDP.map((country, index) => (
+                  <CountryComparison
+                    key={country.code}
+                    country={country}
+                    maxDebt={maxDebt}
+                    usDebt={currentDebt}
+                    rank={index + 1}
+                  />
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="capita" className="mt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {countriesByPerCapita.map((country, index) => (
+                  <CountryComparison
+                    key={country.code}
+                    country={country}
+                    maxDebt={maxDebt}
+                    usDebt={currentDebt}
+                    rank={index + 1}
+                  />
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+
+          <div className="bg-muted/30 border border-border/50 rounded-lg p-4 text-center">
+            <p className="text-xs text-muted-foreground">
+              International debt figures are estimates converted to USD as of December 2024. 
+              Sources: IMF, World Bank, National Treasury Departments.
             </p>
           </div>
         </section>
