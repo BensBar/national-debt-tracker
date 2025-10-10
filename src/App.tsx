@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { DebtCounter } from '@/components/DebtCounter';
 import { MetricCard } from '@/components/MetricCard';
 import { CountryComparison } from '@/components/CountryComparison';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -125,6 +126,9 @@ function App() {
     <div className="min-h-screen bg-background text-foreground">
       <Toaster />
       <div className="max-w-7xl mx-auto p-6 md:p-12 space-y-12">
+        <div className="flex justify-end mb-4">
+          <ThemeToggle />
+        </div>
         <header className="text-center space-y-6">
           <h1 className="text-3xl md:text-4xl font-semibold text-foreground">
             United States National Debt
