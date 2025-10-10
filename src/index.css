@@ -22,15 +22,15 @@
   --popover-foreground: oklch(0.98 0 0);
   
   --primary: oklch(0.25 0.05 250);
-  --primary-foreground: oklch(0.98 0 0);
+  --primary-foreground: oklch(20.8% 0.042 265.755);
   
-  --secondary: oklch(0.35 0.01 250);
+  --secondary: oklch(97.1% 0.013 17.38);
   --secondary-foreground: oklch(0.98 0 0);
   
   --muted: oklch(0.32 0.03 250);
   --muted-foreground: oklch(0.75 0.01 250);
   
-  --accent: oklch(0.55 0.22 25);
+  --accent: oklch(57.7% 0.245 27.325);
   --accent-foreground: oklch(0.98 0 0);
   
   --destructive: oklch(0.55 0.22 25);
