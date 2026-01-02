@@ -64,7 +64,7 @@ function App() {
     } catch (err) {
       setError('Failed to load debt data. Using cached estimate.');
       setDebtData({
-        amount: 36000000000000,
+        amount: 35000000000000,
         date: new Date().toISOString().split('T')[0],
       });
       toast.error('Failed to fetch live data');

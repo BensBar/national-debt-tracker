@@ -188,4 +188,17 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Enhanced rendering for high-DPI displays */
+  svg, img, canvas {
+    shape-rendering: geometricPrecision;
+  }
+  
+  /* Ensure smooth scaling for 4K displays */
+  @media (min-resolution: 2dppx) {
+    body {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
 }

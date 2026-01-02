@@ -3,12 +3,42 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
     <title>U.S. National Debt Clock</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
     <link href="/src/main.css" rel="stylesheet" />
+    <style>
+        /* Enable high-quality rendering for 4K displays */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Ensure crisp rendering on high-DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            body {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+        
+        /* Optimize for 4K displays */
+        @media (min-width: 2560px) {
+            html {
+                font-size: 18px;
+            }
+        }
+        
+        @media (min-width: 3840px) {
+            html {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
