@@ -195,6 +195,7 @@
   }
   
   /* Ensure smooth scaling for 4K displays */
+  /* backface-visibility optimization reduces rendering artifacts on high-DPI displays */
   @media (min-resolution: 2dppx) {
     body {
       -webkit-backface-visibility: hidden;
