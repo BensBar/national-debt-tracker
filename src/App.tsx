@@ -288,7 +288,7 @@ function App() {
 
           <div className="bg-muted/30 border border-border/50 rounded-lg p-4 text-center">
             <p className="text-xs text-muted-foreground">
-              International debt figures are estimates converted to USD as of December 2024. 
+              International debt figures are estimates converted to USD as of January 2025. 
               Sources: IMF, World Bank, National Treasury Departments.
             </p>
           </div>
